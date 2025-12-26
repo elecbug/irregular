@@ -6,23 +6,23 @@ import (
 	"unicode"
 )
 
-// Date represents a date with its raw string representation.
-type Date struct {
+// RawDate represents a date with its raw string representation.
+type RawDate struct {
 	raw string
 }
 
-// NewDate creates a new Date instance from the given date string.
-func NewDate(dateStr string) Date {
-	return Date{raw: dateStr}
+// NewRawDate creates a new RawDate instance from the given date string.
+func NewRawDate(dateStr string) RawDate {
+	return RawDate{raw: dateStr}
 }
 
 // Raw returns the raw date string.
-func (d Date) Raw() string {
+func (d RawDate) Raw() string {
 	return d.raw
 }
 
 // Parse parses the date string and returns possible date interpretations based on the provided configuration.
-func (d Date) Parse(cfg *Config) ([]DateResult, error) {
+func (d RawDate) Parse(cfg *Config) ([]DateResult, error) {
 	if cfg == nil {
 		defaultCfg := DefaultConfig()
 		cfg = defaultCfg
@@ -64,7 +64,7 @@ func (d Date) Parse(cfg *Config) ([]DateResult, error) {
 }
 
 // determineDatePattern parses the date string into its components and determines possible date formats.
-func (d Date) determineDatePattern(cfg Config) ([]DateResult, error) {
+func (d RawDate) determineDatePattern(cfg Config) ([]DateResult, error) {
 	components, err := parseDateComponents(d.raw)
 
 	if err != nil {

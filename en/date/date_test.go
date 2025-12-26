@@ -9,7 +9,7 @@ import (
 
 func TestDateRaw(t *testing.T) {
 	dateStr := "12/31/2020"
-	date := NewDate(dateStr)
+	date := NewRawDate(dateStr)
 
 	if date.Raw() != dateStr {
 		t.Errorf("Date.Raw() = %s; expected %s", date.Raw(), dateStr)
@@ -50,7 +50,7 @@ func TestDateParse(t *testing.T) {
 	}
 
 	for i, dateStr := range dateStrs {
-		date := NewDate(dateStr)
+		date := NewRawDate(dateStr)
 		results, err := date.Parse(&Config{BaseYear: 1970})
 
 		if err != nil {
