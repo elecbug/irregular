@@ -1,9 +1,9 @@
-package date_test
+package month_test
 
 import (
 	"testing"
 
-	. "github.com/elecbug/irregular/en/date"
+	. "github.com/elecbug/irregular/en/date/month"
 )
 
 func TestMonth(t *testing.T) {

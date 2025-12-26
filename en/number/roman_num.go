@@ -32,10 +32,10 @@ func TitleRomanNum(n int, upper bool) (string, error) {
 		}
 
 		if upper {
-			titles := []string{"", "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ", "Ⅹ"}
+			titles := []string{"", "\u2160", "\u2161", "\u2162", "\u2163", "\u2164", "\u2165", "\u2166", "\u2167", "\u2168", "\u2169"}
 			return titles[n], nil
 		} else {
-			titles := []string{"", "ⅰ", "ⅱ", "ⅲ", "ⅳ", "ⅴ", "ⅵ", "ⅶ", "ⅷ", "ⅸ", "ⅹ"}
+			titles := []string{"", "\u2170", "\u2171", "\u2172", "\u2173", "\u2174", "\u2175", "\u2176", "\u2177", "\u2178", "\u2179"}
 			return titles[n], nil
 		}
 	}
