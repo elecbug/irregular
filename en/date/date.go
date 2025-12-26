@@ -21,9 +21,6 @@ func (d Date) Raw() string {
 	return d.raw
 }
 
-// LAST_DAYS_IN_MONTH maps month numbers to the number of days in that month (non-leap year).
-var LAST_DAYS_IN_MONTH = [13]int{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
-
 // Parse parses the date string and returns possible date interpretations based on the provided configuration.
 func (d Date) Parse(cfg *Config) ([]DateResult, error) {
 	if cfg == nil {
@@ -233,60 +230,6 @@ func (d Date) determineDatePattern(cfg Config) ([]DateResult, error) {
 			},
 		}, nil
 	}
-}
-
-// DateFormat represents the format of the date.
-type DateFormat int
-
-const (
-	FormatInvalid DateFormat = iota
-	FormatDMY
-	FormatMDY
-	FormatYMD
-)
-
-// String returns the string representation of the DateFormat.
-func (df DateFormat) String() string {
-	switch df {
-	case FormatDMY:
-		return "DMY"
-	case FormatMDY:
-		return "MDY"
-	case FormatYMD:
-		return "YMD"
-	default:
-		return "Invalid Format"
-	}
-}
-
-// Config holds configuration options for date parsing.
-type Config struct {
-	BaseYear int
-}
-
-// DefaultConfig returns the default configuration for date parsing.
-func DefaultConfig() *Config {
-	return &Config{
-		BaseYear: 1970,
-	}
-}
-
-// dateComponents holds the parsed components of a date string.
-type dateComponents struct {
-	first            int
-	second           int
-	third            int
-	separator        string
-	hasLastSeparator bool
-}
-
-// DateResult represents the result of parsing a date string.
-type DateResult struct {
-	Format     DateFormat
-	Year       int
-	Month      int
-	Day        int
-	Confidence float64
 }
 
 // yearConvert converts a 2-digit year to a 4-digit year based on the base year.
